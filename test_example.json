@@ -1,0 +1,8 @@
+{
+  "query": "What is Python?",
+  "documents": [
+    "Python is a high-level programming language",
+    "The weather is nice today",
+    "Python is used for data science and machine learning"
+  ]
+}
