@@ -21,6 +21,22 @@
 above a threshold are marked "Accepted" (green) and the rest "Rejected" (red), which helps filter
 low-quality retrieval results in RAG pipelines.
 
+## How it works
+
+1. Concatenate the query and document and pass them to the model
+2. The model outputs a relevance score between 0 and 1
+3. Compare the score to the threshold to decide whether the document is relevant
+4. Display the result with color coding
+
+```
+┏━━━━━━━━━━━━━━━━━━━━┳━━━━━━━━━━━━━━━━━━━━┳━━━━━━━┳━━━━━━━━━━━┓
+┃ Query              ┃ Document           ┃ Score ┃  Status   ┃
+┡━━━━━━━━━━━━━━━━━━━━╇━━━━━━━━━━━━━━━━━━━━╇━━━━━━━╇━━━━━━━━━━━┩
+│ What is Python?    │ Python is a...     │ 0.892 │ ✓ Accepted│
+│ What is Python?    │ Nice weather       │ 0.123 │ ✗ Rejected│
+└────────────────────┴────────────────────┴───────┴───────────┘
+```
+
 ## Features
 
 - 🎯 Cross-Encoder relevance scoring (0–1)
@@ -80,13 +96,50 @@ context-relevance-scorer score --batch input.json --threshold 0.6
 export HF_ENDPOINT=https://hf-mirror.com
 ```
 
+## Project structure
+
+```
+context-relevance-scorer/
+├── src/context_relevance_scorer/
+│   ├── __init__.py          # Package initialization
+│   ├── __main__.py          # python -m entry point
+│   ├── cli.py               # CLI interface
+│   ├── core.py              # Core scoring logic
+│   └── utils.py             # Utility functions
+├── tests/test_core.py       # Unit tests
+├── pyproject.toml           # Project configuration
+├── LICENSE                  # Apache 2.0
+└── CONTRIBUTING.md
+```
+
+## Tech stack
+
+- **Python** >= 3.8
+- **sentence-transformers** — Cross-Encoder model support
+- **transformers** — Hugging Face transformers library
+- **torch** — PyTorch backend
+- **rich** — terminal beautification
+- **typer** — CLI framework
+
 ## Development
 
 ```bash
+git clone https://github.com/PerryLink/context-relevance-scorer.git
+cd context-relevance-scorer
 pip install -e .
+
 pytest tests/ -v
 python -m context_relevance_scorer score --help
 ```
+
+## Contributing
+
+See [CONTRIBUTING.md](CONTRIBUTING.md) for contribution guidelines.
+
+## Related
+
+- [dsh-library](https://github.com/PerryLink/dsh-library) — the DSH plugin this project was ported into
+- [PerryLink](https://github.com/PerryLink) — the PerryLink DSH Plugin Family
 
 ## License
 
