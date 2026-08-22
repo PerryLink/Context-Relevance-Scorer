@@ -1,6 +1,7 @@
 <div align="center">
 
 # Context-Relevance-Scorer
+[![Gitee](https://img.shields.io/badge/Gitee-mirror-c71d23?logo=gitee)](https://gitee.com/perrylink/context-relevance-scorer)
 
 **A relevance scoring tool for RAG pipelines that uses a Cross-Encoder model to score and filter query–document pairs.**
 
