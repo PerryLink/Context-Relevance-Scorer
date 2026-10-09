@@ -46,7 +46,8 @@
 ## 快速开始
 
 ```bash
-pip install context-relevance-scorer
+pip install "git+https://github.com/PerryLink/Context-Relevance-Scorer.git"
+# （PyPI 未发布，源码直装）
 ```
 
 ## 使用方法

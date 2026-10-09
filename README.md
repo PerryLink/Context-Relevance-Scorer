@@ -48,7 +48,8 @@ low-quality retrieval results in RAG pipelines.
 ## Quick start
 
 ```bash
-pip install context-relevance-scorer
+pip install "git+https://github.com/PerryLink/Context-Relevance-Scorer.git"
+# (installs from source; not yet on PyPI)
 ```
 
 ## Usage
